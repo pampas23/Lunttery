@@ -12,7 +12,7 @@ class DinnersController < ApplicationController
 			@dinner=Dinner.new
 			@sub="新增"
 		end	
-		
+
 	end
 
 	def show		

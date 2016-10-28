@@ -1,0 +1,2 @@
+module Api::DinnersHelper
+end

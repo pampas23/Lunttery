@@ -6,7 +6,6 @@
     <tr>
       <th>店名</th>
       <th>功能</th>
-
     </tr>
     
     <% @dinners.each do |dinner| %>
@@ -16,6 +15,7 @@
         </td>
         <td>
           <%= link_to "Show", dinner_path(dinner),:class=>"btn btn-info" %>
+          <%= link_to "Edit", dinners_path(:id => dinner.id),:class=>"btn btn-primary"%>
         </td>
       </tr>
     <% end %>
@@ -64,6 +64,6 @@
       <%=d.text_field :price_level ,:class => "form-control" %>
     </div>
 
-    <%= d.submit "new", :class => "btn btn-primary"%>
+    <%= d.submit @sub, :class => "btn btn-primary"%>
   <%end %>
 </div>

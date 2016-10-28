@@ -1,15 +1,18 @@
 class DinnersController < ApplicationController
-	before_action :find_dinner, :only =>:show
+	before_action :find_dinner, :only =>[:show,:edit,:update]
 
 	def index
 		# @dinners=Dinner.all
 		@dinners=Dinner.page(params[:page]).per(5)
 
-		if @dinner
+		if params[:id]
 			@dinner=Dinner.find(params[:id])
+			@sub = "更新"
 		else
 			@dinner=Dinner.new
+			@sub="新增"
 		end	
+		
 	end
 
 	def show		
@@ -25,6 +28,18 @@ class DinnersController < ApplicationController
 			flash[:alert]="dinner not saved "
 			render "index"
 		end		
+	end
+
+
+
+	def update
+		if @dinner.update(dinner_params)	  		  	
+	  	flash[:notice]="dinner update successfully"
+			redirect_to dinners_path
+		else
+			flash[:alert]="dinner not saved "
+			render 'index'
+		end
 	end
 
 	private

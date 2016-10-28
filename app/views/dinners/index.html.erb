@@ -1,1 +1,32 @@
 <h1>Hello Lunttery</h1>
+
+
+<div>
+	<table>
+		<tr>
+			<th>店名</th>
+			<th>地址</th>
+			<th>ZIP</th>
+			<th>區</th>			
+			<th>經度</th>	
+			<th>緯度</th>
+			<th>風格</th>
+			<th>價位</th>
+		</tr>
+		
+		<% @dinners.each do |dinner| %>
+			<tr>
+				<td>
+					<%= dinner.name %>
+					<%= dinner.address %>
+					<%= dinner.zip %>
+					<%= dinner.district %>
+					<%= dinner.lat %>
+					<%= dinner.lng %>
+					<%= dinner.style %>
+					<%= dinner.price_level %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>

@@ -1,31 +1,30 @@
 <h1>Hello Dinner show page</h1>
 
 <div>
-	<table class="table table-hover">
-		<tr>
-			<th>店名</th>
-			<th>地址</th>
-			<th>ZIP</th>
-			<th>區</th>			
-			<th>經度</th>	
-			<th>緯度</th>
-			<th>風格</th>
-			<th>價位</th>
-		</tr>
-		
-		
-			<tr>
-				<td>
-					<%= @dinner.name %>
-					<%= @dinner.address %>
-					<%= @dinner.zip %>
-					<%= @dinner.district %>
-					<%= @dinner.lat %>
-					<%= @dinner.lng %>
-					<%= @dinner.style %>
-					<%= @dinner.price_level %>
-				</td>
-			</tr>
-		
-	</table>
+  <table class="table table-hover">
+    <tr>
+        <th>店名</th>
+        <th>地址</th>
+        <th>ZIP</th>
+        <th>區</th>          
+        <th>經度</th> 
+        <th>緯度</th>
+        <th>風格</th>
+        <th>價位</th>
+    </tr>       
+    
+    <tr>
+      <td><%= @dinner.name %></td>
+      <td><%= @dinner.address %></td>
+      <td><%= @dinner.zip %></td>
+      <td><%= @dinner.district %></td>
+      <td><%= @dinner.lat %></td>
+      <td><%= @dinner.lng %></td>
+      <td><%= @dinner.style %></td>
+      <td><%= @dinner.price_level %></td>
+    </tr>
+
+  </table>
 </div>
+
+<%= link_to "回首頁", dinners_path,:class=>"btn btn-info" %>

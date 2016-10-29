@@ -3,14 +3,25 @@ class Api::DinnersController < ApplicationController
 	before_action :enable_cors
 
 	def index
-		@dinner=Dinner.find(params[:id])
+		
+		if (params[:id])
+			@dinner=Dinner.find(params[:id])
+			render :json => {
+				:data => @dinner.return_json
+			}
+		else
+			@dinners=Dinner.all
+			render :json => {
+				:data => @dinners.map{|d| d.return_json}
+			}
+		end
+		
+	end	
 		# return json return_json(@dinners)
 
-	  respond_to do |format|
-	    # format.json {render :json => { id: @dinners.id, name: @dinners.name }.to_json}
-	    format.json {render :json => @dinner.return_json.to_json}
-		end
 
+
+	
 	private
 
   def enable_cors
@@ -21,5 +32,5 @@ class Api::DinnersController < ApplicationController
     response.headers['Access-Control-Request-Headers'] = 'Origin, X-Atmosphere-tracking-id, X-Atmosphere-Framework, X-Cache-Date, Content-Type, X-Atmosphere-Transport,  X-Remote, api_key, *'
   end
 
-	end
+	
 end

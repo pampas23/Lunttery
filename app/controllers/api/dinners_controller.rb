@@ -1,6 +1,7 @@
 class Api::DinnersController < ApplicationController
 	skip_before_action :verify_authenticity_token
 	before_action :enable_cors
+	before_action :set_default_format
 
 	def index
 		
@@ -32,5 +33,8 @@ class Api::DinnersController < ApplicationController
     response.headers['Access-Control-Request-Headers'] = 'Origin, X-Atmosphere-tracking-id, X-Atmosphere-Framework, X-Cache-Date, Content-Type, X-Atmosphere-Transport,  X-Remote, api_key, *'
   end
 
+  def set_default_format
+    request.format = 'json'
+  end
 	
 end

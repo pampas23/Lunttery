@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'kaminari'
+#for user log in
+gem 'devise'
 
 gem 'rack-cors', require: 'rack/cors'
 

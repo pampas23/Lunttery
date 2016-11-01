@@ -1,5 +1,5 @@
 class DinnersController < ApplicationController
-	before_action :find_dinner, :only =>[:show,:edit,:update]
+	before_action :find_dinner, :only =>[:show,:edit,:update,:destroy]
 
 	def index
 		# @dinners=Dinner.all
@@ -40,6 +40,11 @@ class DinnersController < ApplicationController
 			flash[:alert]="dinner not saved "
 			render 'index'
 		end
+	end
+
+	def destroy
+		@dinner.destroy
+		redirect_to dinners_path
 	end
 
 	private

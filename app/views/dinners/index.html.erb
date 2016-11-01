@@ -16,6 +16,7 @@
         <td>
           <%= link_to "Show", dinner_path(dinner),:class=>"btn btn-info" %>
           <%= link_to "Edit", dinners_path(:id => dinner.id),:class=>"btn btn-primary"%>
+          <%= link_to "Delete", dinner_path(dinner),:method=>:delete,:class=>"btn btn-danger"%>
           
         </td>
       </tr>

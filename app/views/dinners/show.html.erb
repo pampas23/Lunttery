@@ -27,4 +27,11 @@
   </table>
 </div>
 
+<div>
+  <% @meals.each do |meal| %>
+    <p>名稱： <%= meal.name %> </p>
+    <p>說明：<%= meal.discription %> </p>
+    <p>價格： <%= meal.price %> </p>
+  <% end %>
+</div>
 <%= link_to "回首頁", dinners_path,:class=>"btn btn-info" %>

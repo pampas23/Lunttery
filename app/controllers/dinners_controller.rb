@@ -15,7 +15,7 @@ class DinnersController < ApplicationController
 	end
 
 	def show		
-		
+		@meals = @dinner.meals
 	end
 
 	def create

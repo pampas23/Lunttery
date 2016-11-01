@@ -12,7 +12,6 @@ class DinnersController < ApplicationController
 			@dinner=Dinner.new
 			@sub="新增"
 		end	
-
 	end
 
 	def show		
@@ -20,6 +19,7 @@ class DinnersController < ApplicationController
 	end
 
 	def create
+		@dinners=Dinner.page(params[:page]).per(5)
 		@dinner=Dinner.new(dinner_params)
 		if @dinner.save(dinner_params)
 			flash[:notice]="dinner saved successfully"

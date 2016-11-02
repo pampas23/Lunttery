@@ -18,6 +18,13 @@ class Api::DinnersController < ApplicationController
 		end
 		
 	end	
+
+	def show
+		@dinner=Dinner.find(params[:id])
+			render :json => {
+				:data => @dinner.return_json
+			}
+	end
 		# return json return_json(@dinners)
 
 

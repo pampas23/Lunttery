@@ -38,12 +38,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'kaminari'
-#for user log in
+# for user log in
 gem 'devise'
 
 gem 'rack-cors', require: 'rack/cors'
-
+# use faker to create fake data
 gem 'faker'
+# Use rest-client to get the API data
+gem 'rest-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -8,7 +8,9 @@ class Dinner < ApplicationRecord
 
 			:id =>self.id,
 			:name => self.name, 
-			:address => self.address 
+			:address => self.address, 
+			:lat => self.lat,
+			:lng => self.lng,
 			
 		}
 		

@@ -2,6 +2,7 @@ class Dinner < ApplicationRecord
 	validates_presence_of :name
 
 	has_many :meals
+	belongs_to :style
 
 	def return_json
 		return { 
@@ -11,6 +12,7 @@ class Dinner < ApplicationRecord
 			:address => self.address, 
 			:lat => self.lat,
 			:lng => self.lng,
+			:style_id => self.style_id
 			
 		}
 		

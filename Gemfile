@@ -40,7 +40,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'kaminari'
 # for user log in
 gem 'devise'
-
+# for user login in facebook
+gem 'omniauth-facebook'
 gem 'rack-cors', require: 'rack/cors'
 # use faker to create fake data
 gem 'faker'

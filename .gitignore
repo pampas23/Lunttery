@@ -21,3 +21,4 @@
 .byebug_history
 
 /config/google_place.yml
+/config/facebook.yml

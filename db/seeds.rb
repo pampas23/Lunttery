@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Style.create!( :name => "日式" )
+Style.create!( :name => "韓式" )
+Style.create!( :name => "美式" )
+Style.create!( :name => "台式" )
+Style.create!( :name => "泰式" )
+Style.create!( :name => "義式" )

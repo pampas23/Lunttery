@@ -16,6 +16,7 @@ class DinnersController < ApplicationController
 
 	def show		
 		@meals = @dinner.meals
+		@meal  = Meal.new
 	end
 
 	def create
@@ -54,6 +55,6 @@ class DinnersController < ApplicationController
 	end
 
 	def dinner_params
-		params.require(:dinner).permit(:name,:zip,:district,:address,:lat,:lng,:style,:price_level)
+		params.require(:dinner).permit(:name,:zip,:district,:address,:lat,:lng,:style,:price_level,:style_id)
 	end
 end

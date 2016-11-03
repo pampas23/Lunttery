@@ -59,8 +59,8 @@
     </div>
 
     <div class="form-group">
-      <%=d.label :style ,"風格"%>
-      <%=d.text_field :style ,:class => "form-control" %>
+      <%=d.label :style_id ,"風格"%>
+      <%=d.collection_select(:style_id, Style.all, :id, :name) %>
     </div>
 
     <div class="form-group">

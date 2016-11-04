@@ -25,20 +25,24 @@
       <td><%= @dinner.style.try(:name) %></td>
       <td><%= @dinner.price_level %></td>
     </tr>
-    
+
   </table>
 </div>
 
-<%= link_to  "New", new_meal_path ,:class=>"btn btn-primary"%>
-
-
 <div>
-  <% @meals.each do |meal| %>
-    <p>名稱： <%= meal.name %> </p>
-    <p>說明：<%= meal.discription %> </p>
-    <p>價格： <%= meal.price %> </p>
-  <% end %>
+  <%= link_to  "New", new_meal_path ,:class=>"btn btn-primary"%>  
 </div>
 
 
-<%= link_to "回首頁", dinners_path,:class=>"btn btn-info" %>
+<% @meals.each do |meal| %>
+  <div class="meal-box">
+    <p>編號： <%= meal.id %></p>
+    <p>名稱： <%= meal.name %> </p>
+    <p>說明：<%= meal.discription %> </p>
+    <p>價格： <%= meal.price %> </p>
+    <p>風格： <%= meal.style.name %> </p>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "回首頁", dinners_path,:class=>"btn btn-info" %></div>

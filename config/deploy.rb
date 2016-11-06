@@ -1,14 +1,14 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
 `ssh-add`
-set :application, 'rails-exercise'
-set :repo_url, 'git@github.com:ihower/rails-exercise.git'
+set :application, 'lunttery'
+set :repo_url, 'git@github.com:pampas23/Lunttery.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/deploy/rails-exercise'
+set :deploy_to, '/home/deploy/lunttery'
 
 # Default value for :scm is :git
 # set :scm, :git

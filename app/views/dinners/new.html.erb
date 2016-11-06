@@ -1,33 +1,4 @@
-<h1>Hello Lunttery</h1>
-
-
-<div>
-  <table class="table table-hover">
-    <tr>
-      <th>店名</th>
-      <th>功能</th>
-    </tr>
-    
-    <% @dinners.each do |dinner| %>
-      <tr>
-        <td>
-          <%= dinner.name %>
-        </td>
-        <td>
-          <%= link_to "Show", dinner_path(dinner),:class=>"btn btn-info" %>
-          <%= link_to "Edit", dinners_path(:id => dinner.id,:page => params[:page]),:class=>"btn btn-primary"%>
-          <%= link_to "Delete", dinner_path(dinner),:method=>:delete,:class=>"btn btn-danger"%>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-</div>
-
-<%=paginate @dinners%>
-<div>
-  <%= link_to "New", new_dinner_path,:class=>"btn btn-info" %>
-</div>
-
+<p>HELLO New Dinner</p>
 <div class="post">
   <%=form_for @dinner do |d| %>
     <div class="form-group">
@@ -64,13 +35,6 @@
       <%=d.label :style_id ,"風格"%>
       <%=d.collection_select(:style_id, Style.all, :id, :name) %>
     </div>
-    
-    <!-- problem to be fix -->
-    <%if @dinner.name != nil %>
-      <%= d.fields_for :photos do |photo|%>
-        <%= photo.file_field :avatar ,:class => "form-control" %>
-      <%end %>
-    <%end %>
 
     <%= d.submit @sub, :class => "btn btn-primary"%>
   <%end %>

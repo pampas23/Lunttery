@@ -47,6 +47,8 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'faker'
 # Use rest-client to get the API data
 gem 'rest-client'
+# upload file
+gem "paperclip", "~> 5.0.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

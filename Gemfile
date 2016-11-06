@@ -9,6 +9,10 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg'
 gem 'rails_12factor', group: :production
 
+#Use capistrano to deploy
+gem 'capistrano-rails', :group => :development
+gem 'capistrano-passenger', :group => :development
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

@@ -53,6 +53,13 @@
     <p>說明：<%= meal.discription %> </p>
     <p>價格： <%= meal.price %> </p>
     <p>風格： <%= meal.style.name %> </p>
+    
+    <%meal.photos.each do |photo|%> 
+      <%if photo.avatar_file_name%>
+        <%= image_tag (photo.avatar.url(:thumb)) %>
+      <%end %>
+    <%end %>
+    <p><%= link_to "Show", dinner_meal_path(@dinner,meal),:class=>"btn btn-info" %></p>
   </div>
 <% end %>
 

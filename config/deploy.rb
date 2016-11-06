@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:pampas23/Lunttery.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/deploy/lunttery'
+set :deploy_to, '/home/deploy/rails-exercise'
 
 # Default value for :scm is :git
 # set :scm, :git

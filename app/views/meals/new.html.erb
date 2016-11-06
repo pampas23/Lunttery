@@ -1,7 +1,7 @@
 <p>Hello New meal</p>
 
 <div class="meal">
-  <%=form_for @meal do |d| %>
+  <%=form_for @meal, :url => dinner_meals_path(@dinner,@meal) do |d| %>
     <div class="form-group">
       <%=d.label :name ,"餐點名稱"%>
       <%=d.text_field :name ,:class => "form-control" %>
@@ -22,6 +22,6 @@
       <%=d.collection_select(:style_id, Style.all, :id, :name) %>
     </div>
 
-    <%= d.submit @sub, :class => "btn btn-primary"%>
+    <%= d.submit "新增", :class => "btn btn-primary"%>
   <%end %>
 </div>

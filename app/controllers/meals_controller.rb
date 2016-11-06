@@ -1,19 +1,21 @@
 class MealsController < ApplicationController
 
 	def new
-		@meal=Meal.new	
+		@dinner=Dinner.find(params[:dinner_id])
+		@meal=@dinner.meals.new
+
 	end
 
 	def create
-		@dinner=Dinner.find_by(params[:id])
-		@meal=Meal.new(meal_params)
-		@meal.dinner=@dinner
-		if @meal.save(meal_params)
+		@dinner=Dinner.find(params[:dinner_id])
+		@meal=@dinner.meals.new(meal_params)
+		
+		if @meal.save
 			flash[:notice]="meal saved successfully"
 			redirect_to dinner_path(@dinner)
 		else
 			flash[:alert]="meal not saved "
-			render 'show'
+			render 'new'
 		end		
 	end
 

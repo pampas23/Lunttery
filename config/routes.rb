@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-	resources :dinners 
-	resources :meals
+	resources :dinners do
+		resources :meals	
+	end
+	
 	resources :photos 
 	namespace :api do
   		resources :dinners

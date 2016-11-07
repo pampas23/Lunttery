@@ -1,0 +1,67 @@
+<h1>Hello Dinner show page Admin</h1>
+
+<div>
+  <%@dinner.photos.each do |photo|%> 
+    <%if photo.avatar_file_name%>
+      <%= image_tag (photo.avatar.url(:thumb)) %>
+    <%end %>
+  <%end %>
+</div>
+
+<div>
+  <table class="table table-hover">
+    <tr>
+        <th>店名</th>
+        <th>地址</th>
+        <th>ZIP</th>
+        <th>區</th>          
+        <th>經度</th> 
+        <th>緯度</th>
+        <th>評分</th>
+        <th>風格</th>
+        <th>價位</th>
+    </tr>       
+    
+    <tr>
+      <td><%= @dinner.name %></td>
+      <td><%= @dinner.address %></td>
+      <td><%= @dinner.zip %></td>
+      <td><%= @dinner.district %></td>
+      <td><%= @dinner.lat %></td>
+      <td><%= @dinner.lng %></td>
+      <td><%= @dinner.rating %></td>
+      <td><%= @dinner.style.try(:name) %></td>
+      <td><%= @dinner.price_level %></td>
+      <td>
+
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+
+<div>
+  <%= link_to  "新增餐點", new_admin_dinner_meal_path(@dinner) ,:class=>"btn btn-primary"%>  
+</div>
+
+
+<% @meals.each do |meal| %>
+  <div class="meal-box">
+    <p>編號： <%= meal.id %></p>
+    <p>名稱： <%= meal.name %> </p>
+    <p>說明：<%= meal.discription %> </p>
+    <p>價格： <%= meal.price %> </p>
+    <p>風格： <%= meal.style.name %> </p>
+    
+    <%meal.photos.each do |photo|%> 
+      <%if photo.avatar_file_name%>
+        <%= image_tag (photo.avatar.url(:thumb)) %>
+      <%end %>
+    <%end %>
+    <p><%= link_to "Show", admin_dinner_meal_path(@dinner,meal),:class=>"btn btn-info" %></p>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "回首頁", admin_dinners_path,:class=>"btn btn-info" %></div>

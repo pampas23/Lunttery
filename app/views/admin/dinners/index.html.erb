@@ -1,6 +1,6 @@
-<h1>Hello Lunttery for user</h1>
+<h1>Hello Lunttery Admin</h1>
 
-<%= link_to "Change to Admin", admin_dinners_path,:class=>"btn btn-info" %>
+<%= link_to "User Page", dinners_path,:class=>"btn btn-info" %>
 
 <div>
   <table class="table table-hover">
@@ -15,9 +15,9 @@
           <%= dinner.name %>
         </td>
         <td>
-          <%= link_to "Show", dinner_path(dinner),:class=>"btn btn-info" %>
-          <%= link_to "Edit", dinners_path(:id => dinner.id,:page => params[:page]),:class=>"btn btn-primary"%>
-          <%= link_to "Delete", dinner_path(dinner),:method=>:delete,:class=>"btn btn-danger"%>
+          <%= link_to "Show", admin_dinner_path(dinner),:class=>"btn btn-info" %>
+          <%= link_to "Edit", admin_dinners_path(:id => dinner.id,:page => params[:page]),:class=>"btn btn-primary"%>
+          <%= link_to "Delete", admin_dinner_path(dinner),:method=>:delete,:class=>"btn btn-danger"%>
         </td>
       </tr>
     <% end %>

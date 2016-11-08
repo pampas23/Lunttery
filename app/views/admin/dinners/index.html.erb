@@ -30,7 +30,13 @@
 </div>
 
 <div class="post">
-  <%=form_for @dinner do |d| %>
+  <% if @dinner.new_record? 
+      url = admin_dinners_path
+    else
+      url = admin_dinner_path(@dinner)
+      end %>
+      
+  <%=form_for @dinner, :url => url  do |d| %>
     <div class="form-group">
       <%=d.label :name ,"店名"%>
       <%=d.text_field :name ,:class => "form-control" %>

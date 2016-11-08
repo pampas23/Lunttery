@@ -26,7 +26,18 @@ class Api::DinnersController < ApplicationController
 			}
 	end
 		# return json return_json(@dinners)
+	
+	def new
+		# @dinner=Dinner.new(dinner_params)
+		@dinner=Dinner.new(dinner_params)
+		# @dinner.name=params[:name]
+		# @dinner.address=params[:address]
+		@dinner.save
 
+		render :json => {
+				:data => "OK"
+			}
+	end
 
 
 	
@@ -43,5 +54,8 @@ class Api::DinnersController < ApplicationController
   def set_default_format
     request.format = 'json'
   end
-	
+
+	def dinner_params
+		params.require(:dinner).permit(:name,:zip,:district,:address,:lat,:lng,:style,:price_level,:style_id,:avatar,photos_attributes: [:avatar])
+	end
 end

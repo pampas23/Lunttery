@@ -31,8 +31,8 @@ class Admin::DinnersController < ApplicationController
 		
 		
 		if @dinner.save(dinner_params)
-			@dinner.photos.create(params[:avatar])
-			@dinner.save
+			# @dinner.photos.create(params[:avatar])
+			# @dinner.save
 			flash[:notice]="dinner saved successfully"
 			redirect_to admin_dinners_path
 		else

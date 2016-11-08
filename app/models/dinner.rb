@@ -13,7 +13,8 @@ class Dinner < ApplicationRecord
 			:address => self.address, 
 			:lat => self.lat,
 			:lng => self.lng,
-			:style_id => self.style_id			
+			:style_id => self.style_id,
+			:pics =>self.photos
 		}		
 	end
 

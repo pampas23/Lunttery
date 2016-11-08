@@ -1,6 +1,6 @@
 <p>Hello Meal show Admin</p>
 
-  <%=form_for @meal,:url => admin_dinner_meal_path(@dinner,@meal) , :method=>:patch do |d| %>
+  <%=form_for @meal,:url => admin_dinner_meal_path(@dinner,@meal) , :method=>:patch, :html=>{ :enctype=>"multipart/form-data" } do |d| %>
     <div class="form-group">
       <%=d.label :name ,"店名"%>
       <%=d.text_field :name ,:class => "form-control" %>
@@ -21,12 +21,22 @@
     </div>
 		<!-- problem to be fix -->
     <div>
-      <%= d.fields_for :photos do |photo|%>
-      	<%= photo.file_field :avatar ,:class => "form-control" %>
-      <%end %>
+      <% @meal.photos.each do |photo| %>
+        <input type="checkbox" name="photo[remove_avatar]" value="1">
+        <img src="<%= photo.avatar.url %>" style="width: 50px;">
+      <% end %>
+      <input type="file" name="meal[photos_attributes][0][avatar]" class="photo_file">
+      <img src="" class="photo_img" style="display:none; width: 400px;">
     </div>
 
     <%= d.submit "更新", :class => "btn btn-primary"%>
   <%end %>
-
 <div>
+<script type="text/javascript">
+    $(".photo_file").on("change", function(e){
+      var file = $(this)[0].files[0];
+      var url = URL.createObjectURL(file);
+      $(".photo_img").attr('src',url);
+      $(".photo_img").show();
+    });
+</script>

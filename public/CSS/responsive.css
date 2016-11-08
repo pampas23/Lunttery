@@ -1,0 +1,23 @@
+@media screen and (min-width: 1024px) {
+  .meal_info{
+    width: 18%;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .meal_info{
+    width: 25%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .meal_info{
+    width: 30%;
+  }
+}
+@media screen and (max-width: 599px) {
+  .meal_info{
+    width: 90%;
+  }
+  .row{
+    margin: 0;
+  }
+}

@@ -1,10 +1,10 @@
 class Admin::DinnersController < ApplicationController
 	before_action :find_dinner, :only =>[:show,:edit,:update,:destroy]
-	
+	layout "admin"
 	def index
 		# @dinners=Dinner.all
 		@dinners=Dinner.order("id desc").page(params[:page]).per(5)
-
+		
 		if params[:id]
 			@dinner=Dinner.find(params[:id])
 			@sub = "更新"

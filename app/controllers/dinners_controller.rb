@@ -4,7 +4,7 @@ class DinnersController < ApplicationController
 	def index
 		# @dinners=Dinner.all
 		@dinners=Dinner.order("id desc").page(params[:page]).per(5)
-
+		@meals=Meal.order("id desc").page(params[:page]).per(5)
 		if params[:id]
 			@dinner=Dinner.find(params[:id])
 			@sub = "更新"

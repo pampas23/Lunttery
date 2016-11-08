@@ -1,5 +1,5 @@
 class Admin::MealsController < ApplicationController
-
+	layout "admin"
 	def new
 		@dinner=Dinner.find(params[:dinner_id])
 		@meal=@dinner.meals.new

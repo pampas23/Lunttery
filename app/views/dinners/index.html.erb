@@ -2,77 +2,21 @@
 
 <%= link_to "Change to Admin", admin_dinners_path,:class=>"btn btn-info" %>
 
-<div>
-  <table class="table table-hover">
-    <tr>
-      <th>店名</th>
-      <th>功能</th>
-    </tr>
-    
-    <% @dinners.each do |dinner| %>
-      <tr>
-        <td>
-          <%= dinner.name %>
-        </td>
-        <td>
-          <%= link_to "Show", dinner_path(dinner),:class=>"btn btn-info" %>
-          <%= link_to "Edit", dinners_path(:id => dinner.id,:page => params[:page]),:class=>"btn btn-primary"%>
-          <%= link_to "Delete", dinner_path(dinner),:method=>:delete,:class=>"btn btn-danger"%>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-</div>
-
-<%=paginate @dinners%>
-<div>
-  <%= link_to "New", new_dinner_path,:class=>"btn btn-info" %>
-</div>
-
-<div class="post">
-  <%=form_for @dinner do |d| %>
-    <div class="form-group">
-      <%=d.label :name ,"店名"%>
-      <%=d.text_field :name ,:class => "form-control" %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 .col-sm-12">
+      <!-- <div class="row">
+        <div class="col-md-2"> -->
+        <%@meals.each do  |meal|%>
+          <div class="meal_info">
+            <div class="meal_pic"></div>
+              <div class="meal_text">
+                <h2><%=meal.name %></h2>
+                <span class="gray">#<%=meal.style.name%></span>
+                <div class="meal_price"><%=meal.price%>元<a class="main_color to_right"><i class="fa fa-heart-o" aria-hidden="true"> 18</i></a></div>
+                <span class="gray">#四平商圈</span>
+              </div>
+          </div><!-- meal_info -->
+        <%end %>
+      <%=paginate @meals%>  
     </div>
-
-    <div class="form-group">
-      <%=d.label :zip ,"ZIP"%>
-      <%=d.text_field :zip ,:class => "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%=d.label :district ,"區"%>
-      <%=d.text_field :district ,:class => "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%=d.label :address ,"地址"%>
-      <%=d.text_field :address ,:class => "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%=d.label :lat ,"經度"%>
-      <%=d.text_field :lat ,:class => "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%=d.label :lng ,"緯度"%>
-      <%=d.text_field :lng ,:class => "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%=d.label :style_id ,"風格"%>
-      <%=d.collection_select(:style_id, Style.all, :id, :name) %>
-    </div>
-    
-    <!-- problem to be fix -->
-    <%if @dinner.name != nil %>
-      <%= d.fields_for :photos do |photo|%>
-        <%= photo.file_field :avatar ,:class => "form-control" %>
-      <%end %>
-    <%end %>
-
-    <%= d.submit @sub, :class => "btn btn-primary"%>
-  <%end %>
-</div>
+  </div>

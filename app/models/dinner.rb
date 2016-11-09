@@ -1,5 +1,6 @@
 class Dinner < ApplicationRecord
 	validates_presence_of :name
+	delegate :meal, :to => :dinner, :prefix => true, :allow_nil => true
 
 	has_many :meals
 	belongs_to :style

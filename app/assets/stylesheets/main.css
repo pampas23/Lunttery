@@ -1,0 +1,62 @@
+body{
+  /*background-color: red;*/
+  color: #7c7c7c;
+  font-size: 14px;
+}
+a, a:hover{
+  text-decoration: none;
+  cursor: pointer;
+}
+.main_color{
+  color: #fc7476;
+}
+.main_color_bg{
+  background-color: #fc7476;
+}
+.gray{
+  color: #bebebe;
+}
+.to_right{
+  float: right;
+}
+.meal_info{
+  color: #7c7c7c;
+  border: 1px solid #bebebe;
+  /*width: 18%;*/
+  margin: 10px;
+  float: left;
+}
+/*.meal_info:hover{
+  color: #b4b4b4;
+}*/
+.meal_pic{
+  display: block;
+  height: 250px;
+  width: 100%;
+  background-image: url('http://www.gordonconwell.edu/hamilton/current/images/01.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.meal_info h2{
+  font-size: 1.4em;
+  margin-top: 5px;
+}
+.meal_text{
+  padding: 10px;
+}
+.meal_price{
+  font-size: 1.4em;
+}
+
+/*cover*/
+.navbar-default{
+  background: none;
+  background-color: #fc7476;
+  border: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+}
+.navbar-default .navbar-toggle{
+  background-color: white;
+}

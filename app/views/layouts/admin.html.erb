@@ -24,7 +24,7 @@
     <%= link_to('登入', new_session_path(:user)) %>
     <%= link_to "登入 Facebook", user_facebook_omniauth_authorize_path %>
   <% end %>
-  
+  <%= link_to "User Page", dinners_path,:class=>"btn btn-default" %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <p>Admin的頁面喔</p>

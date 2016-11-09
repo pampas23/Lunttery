@@ -12,7 +12,7 @@ class Admin::DinnersController < ApplicationController
 			@dinner=Dinner.new
 			@sub="新增"
 		end	
-			@photo = @dinner.photos.new
+
 	end
 
 	def new
@@ -49,6 +49,12 @@ class Admin::DinnersController < ApplicationController
 		else
 			flash[:alert]="dinner not saved "
 			render 'index'
+		end
+		if params[:remove_photo]
+			params[:remove_photo].each do |index, photo_id|
+				photo = Photo.find(photo_id)
+				photo.destroy
+			end
 		end
 	end
 

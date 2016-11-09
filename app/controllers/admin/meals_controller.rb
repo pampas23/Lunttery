@@ -29,13 +29,20 @@ class Admin::MealsController < ApplicationController
 
 		@meal=Meal.find(params[:id])
 		@dinner=Dinner.find(params[:dinner_id])
+
 		if @meal.update(meal_params)	  		  	
 	  	flash[:notice]="meal update successfully"
 			redirect_to admin_dinner_path(@dinner)
 		else
 			flash[:alert]="dinner not saved "
 			render 'new'
-		end		
+		end
+		if params[:remove_photo]
+			params[:remove_photo].each do |index, photo_id|
+				photo = Photo.find(photo_id)
+				photo.destroy
+			end
+		end
 	end
 
 private

@@ -36,7 +36,7 @@
       url = admin_dinner_path(@dinner)
       end %>
       
-  <%=form_for @dinner, :url => url  do |d| %>
+  <%=form_for @dinner, :url => url , :html=>{ :enctype=>"multipart/form-data" } do |d| %>
     <div class="form-group">
       <%=d.label :name ,"店名"%>
       <%=d.text_field :name ,:class => "form-control" %>
@@ -73,12 +73,23 @@
     </div>
     
     <!-- problem to be fix -->
-    <%if @dinner.name != nil %>
-      <%= d.fields_for :photos do |photo|%>
-        <%= photo.file_field :avatar ,:class => "form-control" %>
-      <%end %>
-    <%end %>
+    <div>
+      <% @dinner.photos.each_with_index do |photo, index| %>
+        <input type="checkbox" name='<%= "remove_photo[#{index}]"%>' value="<%= photo.id %>">
+        <img src="<%= photo.avatar.url %>" style="width: 50px;">
+      <% end %>
+      <input type="file" name="dinner[photos_attributes][0][avatar]" class="photo_file">
+      <img src="" class="photo_img" style="display:none; width: 400px;">
+    </div>
 
     <%= d.submit @sub, :class => "btn btn-primary"%>
   <%end %>
 </div>
+<script type="text/javascript">
+    $(".photo_file").on("change", function(e){
+      var file = $(this)[0].files[0];
+      var url = URL.createObjectURL(file);
+      $(".photo_img").attr('src',url);
+      $(".photo_img").show();
+    });
+</script>

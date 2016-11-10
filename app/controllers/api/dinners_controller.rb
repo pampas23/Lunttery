@@ -46,11 +46,6 @@ class Api::DinnersController < Api::ApiController
 	private
 
 
-
-  def set_default_format
-    request.format = 'json'
-  end
-
 	def dinner_params
 		params.require(:dinner).permit(:name,:zip,:district,:address,:lat,:lng,:style,:price_level,:style_id,:avatar,photos_attributes: [:avatar])
 	end

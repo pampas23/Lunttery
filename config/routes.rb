@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 	
 	resources :photos 
 	
-	namespace :api do
+	namespace :api, :defaults => { :format => :json }  do
   		resources :dinners
   		resources :meals
 	end

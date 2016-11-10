@@ -8,7 +8,7 @@ class Api::MealsController < Api::ApiController
 			}
 		else
 		
-			@meals=Meal.all.sample(5)
+			@meals=Meal.all
 			render :json => {
 				:data => @meals.map{|d| d.return_json}
 			}
@@ -23,7 +23,4 @@ class Api::MealsController < Api::ApiController
 			}
 	end
 
-  def set_default_format
-    request.format = 'json'
-  end
 end

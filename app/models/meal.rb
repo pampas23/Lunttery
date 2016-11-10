@@ -9,4 +9,21 @@ class Meal < ApplicationRecord
 
 	has_many :photos, :as => :phototable
 	accepts_nested_attributes_for :photos
+
+	def return_json
+		return { 
+			:id =>self.id,
+			:dinner_id => self.dinner_id,
+			:name => self.name, 
+			:discription => self.discription,
+			:price =>self.price ,
+			:style_id => self.style_id,
+			:photos_url => self.return_photo_url
+		}		
+	end
+	def return_photo_url
+		self.photos.each do |photo|
+			return "/system/photos/avatars/000/000/#{photo.id}/original/#{photo.avatar_file_name}"
+		end	
+	end
 end

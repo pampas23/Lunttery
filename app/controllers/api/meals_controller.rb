@@ -7,8 +7,8 @@ class Api::MealsController < Api::ApiController
 				:data => @meal.return_json
 			}
 		else
-		
-			@meals=Meal.all
+			#temporary give 5 meal
+			@meals=Meal.all.sample(5)
 			render :json => {
 				:data => @meals.map{|d| d.return_json}
 			}
@@ -18,6 +18,7 @@ class Api::MealsController < Api::ApiController
 
 	def show
 		@meal=Meal.find(params[:id])
+		@dinner = @meal.dinner
 			render :json => {
 				:data => @meal.return_json
 			}

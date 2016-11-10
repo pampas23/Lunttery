@@ -15,13 +15,13 @@ class Dinner < ApplicationRecord
 			:lat => self.lat,
 			:lng => self.lng,
 			:style_id => self.style_id,
-			:photos =>self.photos,
-			# :photos_url => self.return_photo_url
+			# :photos =>self.photo.avatar.url,
+			:photos_url => self.return_photo_url
 		}		
 	end
 	def return_photo_url
 		self.photos.each do |photo|
-			# "/system/photos/avatars/000/000/#{photo.id}/original/#{photo.avatar_file_name}"
+			return "/system/photos/avatars/000/000/#{photo.id}/original/#{photo.avatar_file_name}"
 		end	
 	end
 end

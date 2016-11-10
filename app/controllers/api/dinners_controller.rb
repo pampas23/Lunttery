@@ -27,11 +27,8 @@ class Api::DinnersController < ApplicationController
 	end
 		# return json return_json(@dinners)
 	
-	def new
-		# @dinner=Dinner.new(dinner_params)
+	def create
 		@dinner=Dinner.new(dinner_params)
-		# @dinner.name=params[:name]
-		# @dinner.address=params[:address]
 		@dinner.save
 
 		render :json => {
@@ -39,7 +36,14 @@ class Api::DinnersController < ApplicationController
 			}
 	end
 
-
+	def destroy
+		@dinner=Dinner.find(params[:id])
+		@dinner.destroy
+		
+		render :json => {
+				:data => "OK"
+			}		
+	end
 	
 	private
 

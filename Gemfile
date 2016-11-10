@@ -7,7 +7,8 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
 #Use PostgreSQL
 gem 'pg'
-gem 'rails_12factor', group: :production
+
+# gem 'rails_12factor', group: :production # only heroku need this
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

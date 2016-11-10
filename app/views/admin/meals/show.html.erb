@@ -19,6 +19,10 @@
       <%=m.label :style_id ,"風格"%>
       <%=m.collection_select(:style_id, Style.all, :id, :name) %>
     </div>
+    <div class="form-group">
+      <%=m.label :calories ,"卡路里"%>
+      <%=m.text_field :calories ,:class => "form-control" %>
+    </div>
 		<!-- problem to be fix -->
     <div>
       <% @meal.photos.each_with_index do |photo, index| %>

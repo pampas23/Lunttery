@@ -15,6 +15,7 @@ class Dinner < ApplicationRecord
 			:lat => self.lat,
 			:lng => self.lng,
 			:style_id => self.style_id,
+			:phone_number => self.phone_number,
 			# :photos =>self.photo.avatar.url,
 			:photos_url => self.return_photo_url
 		}		

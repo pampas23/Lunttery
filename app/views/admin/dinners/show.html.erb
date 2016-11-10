@@ -20,6 +20,7 @@
         <th>評分</th>
         <th>風格</th>
         <th>價位</th>
+        <th>電話</th>
     </tr>       
     
     <tr>
@@ -32,9 +33,7 @@
       <td><%= @dinner.rating %></td>
       <td><%= @dinner.style.try(:name) %></td>
       <td><%= @dinner.price_level %></td>
-      <td>
-
-      </td>
+      <td><%= @dinner.phone_number %></td>
     </tr>
 
   </table>
@@ -53,7 +52,7 @@
     <p>說明：<%= meal.discription %> </p>
     <p>價格： <%= meal.price %> </p>
     <p>風格： <%= meal.style.name %> </p>
-    
+    <p>卡路里： <%= meal.calories %> </p>
     <%meal.photos.each do |photo|%> 
       <%if photo.avatar_file_name%>
         <%= image_tag (photo.avatar.url(:thumb)) %>

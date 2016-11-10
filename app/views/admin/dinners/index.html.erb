@@ -67,6 +67,10 @@
       <%=d.label :style_id ,"風格"%>
       <%=d.collection_select(:style_id, Style.all, :id, :name) %>
     </div>
+    <div class="form-group">
+      <%=d.label :phone_number ,"電話"%>
+      <%=d.text_field :phone_number ,:class => "form-control" %>
+    </div>
     
     <!-- problem to be fix -->
     <div>

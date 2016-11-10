@@ -18,6 +18,7 @@ class Meal < ApplicationRecord
 			:discription => self.discription,
 			:price =>self.price ,
 			:style => self.style.name,
+			:carories => self.calories,
 			:photos_urls => self.return_photo_url,
 			:dinner =>self.dinner
 		}		

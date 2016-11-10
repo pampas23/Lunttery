@@ -1,7 +1,18 @@
 class Api::ApiController < ApplicationController
 	skip_before_action :verify_authenticity_token
 	before_action :enable_cors
-	before_action :set_default_format
+
+  before_action :authenticate_user_from_token!
+
+  #if user , then login 
+  def authenticate_user_from_token!
+      if params[:auth_token].present?
+        user = User.find_by_authentication_token( params[:auth_token] )
+
+        # Devise: 設定 current_user
+        sign_in(user, store: false) if user
+      end
+  end
 
 	def enable_cors
     response.headers['Access-Control-Allow-Origin'] = '*'

@@ -18,7 +18,6 @@ class Meal < ApplicationRecord
 			:discription => self.discription,
 			:price =>self.price ,
 			:style_id => self.style_id,
-			:photos_url => self.photos,
 			:photos_urls => self.return_photo_url
 		}		
 	end

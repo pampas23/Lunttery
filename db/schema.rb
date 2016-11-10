@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104141029) do
+ActiveRecord::Schema.define(version: 20161110064558) do
 
   create_table "dinners", force: :cascade do |t|
     t.string   "name"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(version: 20161104141029) do
     t.datetime "updated_at",                          null: false
     t.string   "fb_uid"
     t.string   "fb_token"
+    t.string   "authentication_token"
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["fb_uid"], name: "index_users_on_fb_uid"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -4,7 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
-
+     
+  before_create :generate_authentication_token
+  def generate_authentication_token
+     self.authentication_token = Devise.friendly_token
+  end
+  
   #login form facebook       
   def self.from_omniauth(auth)
      # Case 1: Find existing user by facebook uid

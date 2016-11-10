@@ -20,8 +20,9 @@ class Dinner < ApplicationRecord
 		}		
 	end
 	def return_photo_url
-		self.photos.each do |photo|
-			return "/system/photos/avatars/000/000/#{photo.id}/original/#{photo.avatar_file_name}"
+		self.photos.map do |photo|
+			return ApplicationController.helpers.asset_url( photo.avatar.url )
+			# return "/system/photos/avatars/000/000/#{photo.id}/original/#{photo.avatar_file_name}"
 		end	
 	end
 end

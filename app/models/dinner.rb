@@ -2,10 +2,10 @@ class Dinner < ApplicationRecord
 	validates_presence_of :name
 	delegate :meal, :to => :dinner, :prefix => true, :allow_nil => true
 
-	has_many :meals
+	has_many :meals, :dependent => :destroy
 	belongs_to :style
 
-	has_many :photos, :as => :phototable
+	has_many :photos, :as => :phototable, :dependent => :destroy
 	accepts_nested_attributes_for :photos
 	def return_json
 		return { 

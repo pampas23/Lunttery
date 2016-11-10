@@ -7,7 +7,7 @@ class Meal < ApplicationRecord
 	delegate :price, :to => :meal, :prefix => true, :allow_nil => true
 	delegate :style_id, :to => :meal, :prefix => true, :allow_nil => true
 
-	has_many :photos, :as => :phototable
+	has_many :photos, :as => :phototable, :dependent => :destroy
 	accepts_nested_attributes_for :photos
 
 	def return_json
@@ -17,8 +17,9 @@ class Meal < ApplicationRecord
 			:name => self.name, 
 			:discription => self.discription,
 			:price =>self.price ,
-			:style_id => self.style_id,
-			:photos_urls => self.return_photo_url
+			:style => self.style.name,
+			:photos_urls => self.return_photo_url,
+			:dinner =>self.dinner
 		}		
 	end
 

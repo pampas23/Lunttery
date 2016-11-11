@@ -76,7 +76,7 @@ class Admin::DinnersController < ApplicationController
 	end
 
 	def admin_only
-		if current_user&&current_user.role ='admin'
+		if current_user&&current_user.role =='admin'
 
 		else
 			redirect_to dinners_path

@@ -9,9 +9,17 @@ class Api::MealsController < Api::ApiController
 		else
 			#temporary give 5 meal
 			@meals=Meal.all.sample(5)
+			if current_user
 			render :json => {
-				:data => @meals.map{|d| d.return_json}
+				:data => @meals.map{|meal| meal.return_json},
+				:user_liked_meal => @meals.map{|meal| current_user.meals.include?(meal)}
 			}
+			else
+			render :json => {
+				:data => @meals.map{|meal| meal.return_json},
+				:user => 	"nil"
+			}
+			end
 		end
 		# redirect_to dinners_path
 	end

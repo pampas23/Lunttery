@@ -1,5 +1,7 @@
 class Admin::DinnersController < ApplicationController
 	before_action :find_dinner, :only =>[:show,:edit,:update,:destroy]
+	#to be up the upperclass
+	before_action :admin_only
 	layout "admin"
 	def index
 		# @dinners=Dinner.all
@@ -71,5 +73,13 @@ class Admin::DinnersController < ApplicationController
 
 	def dinner_params
 		params.require(:dinner).permit(:name,:zip,:district,:address,:lat,:lng,:style,:price_level,:style_id,:avatar,photos_attributes: [:avatar])
+	end
+
+	def admin_only
+		if current_user&&current_user.role ='admin'
+
+		else
+			redirect_to dinners_path
+		end	
 	end
 end

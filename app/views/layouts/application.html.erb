@@ -65,7 +65,9 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    <%= link_to "Change to Admin", admin_dinners_path,:class=>"btn btn-default" %>
+    <% if current_user&&current_user.role == "admin"%>
+      <%= link_to "Change to Admin", admin_dinners_path,:class=>"btn btn-default" %>
+    <% end %>
     <% if current_user %>
     <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
     <%= link_to('修改密碼', edit_registration_path(:user)) %>

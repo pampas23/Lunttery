@@ -1,5 +1,7 @@
 class Admin::MealsController < ApplicationController
 	layout "admin"
+	#to be up the upperclass
+	before_action :admin_only
 	def new
 		@dinner=Dinner.find(params[:dinner_id])
 		@meal=@dinner.meals.new
@@ -50,5 +52,11 @@ private
 	def meal_params
 		params.require(:meal).permit(:name,:discription,:style_id,:price,photos_attributes: [:avatar])
 	end
+	def admin_only
+		if current_user&&current_user.role ='admin'
 
+		else
+			redirect_to dinners_path
+		end	
+	end
 end

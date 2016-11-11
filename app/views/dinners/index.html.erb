@@ -4,7 +4,11 @@
         <div class="col-md-2"> -->
         <%@meals.each do  |meal|%>
           <div class="meal_info">
-            <div class="meal_pic"></div>
+            <% if meal.photos!=[]%>
+            <div class="meal_pic" style="background-image: url('<%=meal.return_photo_url%>');"></div>
+            <% else %>
+            <div class="meal_pic"></div>            
+            <% end %>
               <div class="meal_text">
                 <h2><%=meal.name %></h2>
                 <span class="gray">#<%=meal.style.name%></span>

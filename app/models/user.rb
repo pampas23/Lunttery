@@ -4,7 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
-     
+  
+  has_many :user_meal_likeships
+  has_many :meals,:through => :user_meal_likeships
+  
   before_create :generate_authentication_token
   def generate_authentication_token
      self.authentication_token = Devise.friendly_token

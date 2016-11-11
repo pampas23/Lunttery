@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
   
-  has_many :user_meal_likeships
+  has_many :user_meal_likeships,:dependent => :destroy
   has_many :meals,:through => :user_meal_likeships
   
   before_create :generate_authentication_token

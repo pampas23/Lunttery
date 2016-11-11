@@ -1,7 +1,7 @@
 class Meal < ApplicationRecord
 	belongs_to :dinner
 	belongs_to :style
-	has_many :user_meal_likeships
+	has_many :user_meal_likeships,:dependent => :destroy
 	has_many :users,:through => :user_meal_likeships
 	validates_presence_of :name
 	delegate :name, :to => :meal, :prefix => true, :allow_nil => true

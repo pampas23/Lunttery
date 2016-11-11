@@ -59,7 +59,7 @@
         <%= image_tag (photo.avatar.url(:thumb)) %>
       <%end %>
     <%end %>
-    <p><%= link_to "Show", dinner_meal_path(@dinner,meal),:class=>"btn btn-info" %></p>
+    <%= link_to "Show", dinner_meal_path(@dinner,meal),:class=>"btn btn-info" %>
   </div>
 <% end %>
 

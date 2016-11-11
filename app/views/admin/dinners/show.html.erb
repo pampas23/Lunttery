@@ -58,7 +58,16 @@
         <%= image_tag (photo.avatar.url(:thumb)) %>
       <%end %>
     <%end %>
-    <p><%= link_to "Show", admin_dinner_meal_path(@dinner,meal),:class=>"btn btn-info" %></p>
+    <p>
+      <%= link_to "Show", admin_dinner_meal_path(@dinner,meal),:class=>"btn btn-info" %>
+      <% if current_user%>
+        <% if meal.users.include?(current_user)%>
+          <%= link_to "Unlike", edit_admin_dinner_meal_user_meal_likeship_path(@dinner,meal,current_user),:class=>"btn btn-info" %>
+        <% else %>
+          <%= link_to "Like", edit_admin_dinner_meal_user_meal_likeship_path(@dinner,meal,current_user),:class=>"btn btn-info" %>
+        <% end %>
+      <% end %>
+    </p>
   </div>
 <% end %>
 

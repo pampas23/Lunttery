@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111022535) do
+ActiveRecord::Schema.define(version: 20161112141242) do
 
   create_table "dinners", force: :cascade do |t|
     t.string   "name"
@@ -21,12 +21,14 @@ ActiveRecord::Schema.define(version: 20161111022535) do
     t.decimal  "lat"
     t.decimal  "lng"
     t.integer  "price_level"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "place_id"
     t.float    "rating"
     t.integer  "style_id"
-    t.string   "phone_number", default: "no data"
+    t.string   "phone_number",   default: "no data"
+    t.string   "onsale",         default: "false"
+    t.string   "onsale_content", default: "not on sale"
     t.index ["name"], name: "index_dinners_on_name"
   end
 

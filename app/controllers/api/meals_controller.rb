@@ -31,8 +31,9 @@ class Api::MealsController < Api::ApiController
 				my_like_meal_ids = current_user.user_meal_likeships.pluck(:meal_id)
 				render :json => {
 					:data => @select_meals.map{|meal| 
-						h = meal.return_json 
+						h = meal.return_json
 						h[:liked] = my_like_meal_ids.include?(meal.id)
+						h[:distance] = @location.distance_from(meal.dinner , :units => :kms)
 						h
 					}
 				}

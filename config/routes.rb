@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	resources :photos 
 	
 	namespace :api, :defaults => { :format => :json }  do
+  		resources :users,:only =>[:show]
   		resources :dinners
   		resources :meals do
   			resources :user_meal_likeships, :only =>[:edit]	

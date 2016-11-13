@@ -5,16 +5,18 @@ class Api::DinnersController < Api::ApiController
 		
 		if (params[:id])
 			@dinner=Dinner.find(params[:id])
+			@meals = @dinner.meals
+
 			render :json => {
-				:data => @dinner.return_json
+				:data => @dinner.meals.map{|meal| meal.return_json}
 			}
 		else
 			@dinners=Dinner.all
 			render :json => {
 				:data => @dinners.map{|d| d.return_json}
 			}
-		end
 		
+		end		
 	end	
 
 	def show

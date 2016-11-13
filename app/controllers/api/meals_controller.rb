@@ -11,6 +11,7 @@ class Api::MealsController < Api::ApiController
 			@lng = params[:lng]
 			@distant = params[:distant]
 			@style_ids = params[:style_ids].split(",").map { |s| s.to_i }
+			@price = params[:price].to_i
 
 			@location = Geokit::LatLng.new(params[:lat],params[:lng])
 			@dinners = Dinner.within(@distant,:origin => @location).includes(:meals)
@@ -20,7 +21,7 @@ class Api::MealsController < Api::ApiController
 
 			@meals.each do |meal|
 				@style_ids.each do |style_id|
-					if meal[:style_id] == style_id
+					if meal[:style_id] == style_id && meal.price < @price
 						@select_meals << meal
 					end
 				end

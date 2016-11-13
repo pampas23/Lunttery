@@ -29,9 +29,10 @@ class Api::MealsController < Api::ApiController
 			end
 
 
-			my_like_meal_ids = current_user.user_meal_likeships.pluck(:meal_id)
+			
 
 			if current_user
+				my_like_meal_ids = current_user.user_meal_likeships.pluck(:meal_id)
 				render :json => {
 					:data => @select_meals.map{|meal| 
 						h = meal.return_json 

@@ -21,9 +21,6 @@
 </div>
 
 <%=paginate @dinners%>
-<div>
-  <%= link_to "New", new_dinner_path,:class=>"btn btn-info" %>
-</div>
 
 <div class="post">
   <% if @dinner.new_record? 

@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   		resources :meals do
   			resources :user_meal_likeships, :only =>[:edit]	
   		end
-  		
+  get "login" => "auth#login"
+  get "logout" => "auth#logout"		
+
 	end
 	
 	

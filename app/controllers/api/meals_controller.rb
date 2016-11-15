@@ -36,12 +36,18 @@ class Api::MealsController < Api::ApiController
 						h[:liked] = my_like_meal_ids.include?(meal.id)
 						h[:distance] = @location.distance_from(meal.dinner , :units => :kms)
 						h
-					}
+					},
+					:user_id => 	current_user.id
 				}
 			else
 				render :json => {
-					:data => @select_meals.map{|meal| meal.return_json},
-					:user => 	"nil"
+					:data => @select_meals.map{|meal| 
+						h = meal.return_json
+						h[:liked] = false
+						h[:distance] = @location.distance_from(meal.dinner , :units => :kms)
+						h
+						},
+					:user_id => 	"nil"
 				}
 			end
 		end

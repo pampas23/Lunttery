@@ -32,8 +32,7 @@ class Meal < ApplicationRecord
 
 	def return_photo_url
 		self.photos.map do |photo|
-		return	ApplicationController.helpers.asset_url( photo.avatar.url(:medium) )
-			#{}"/system/photos/avatars/000/000/#{photo.id}/original/#{photo.avatar_file_name}"
-		end	
+				return	[ApplicationController.helpers.asset_url( photo.avatar.url(:medium) )]
+		end
 	end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115023721) do
+ActiveRecord::Schema.define(version: 20161115055910) do
 
   create_table "coupon_tracks", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20161115023721) do
     t.string   "place_id"
     t.float    "rating"
     t.integer  "style_id"
-    t.string   "phone_number",   default: "no data"
+    t.string   "phone_number",   default: " "
     t.string   "onsale",         default: "false"
     t.string   "onsale_content", default: "not on sale"
     t.index ["name"], name: "index_dinners_on_name"

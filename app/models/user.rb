@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :meals,:through => :user_meal_likeships
   
   has_many :coupon_tracks,:dependent => :destroy
-  has_many :coupon_used, :through => :coupon_tracks, :source=> :meal
+  has_many :coupon_used, :through => :coupon_tracks, :source=> :dinner
 
   before_create :generate_authentication_token
   def generate_authentication_token

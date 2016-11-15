@@ -5,6 +5,9 @@ class Dinner < ApplicationRecord
 	has_many :meals, :dependent => :destroy
 	belongs_to :style
 
+	has_many :coupon_tracks,:dependent => :destroy
+  has_many :coupon_used_by,:through => :coupon_tracks, :source=> :user
+
 	acts_as_mappable :default_units => :kms,
 	               	 :default_formula => :sphere,
 	               	 :distance_field_name => :distance,

@@ -1,4 +1,4 @@
 class CouponTrack < ApplicationRecord
 	belongs_to :user
-	belongs_to :meal
+	belongs_to :dinner
 end

@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 	
 	namespace :api, :defaults => { :format => :json }  do
   		resources :users,:only =>[:show]
-  		resources :dinners
+  		resources :dinners do
+  			resources :coupon_tracks, :only =>[:edit]	
+  		end
   		resources :meals do
   			resources :user_meal_likeships, :only =>[:edit]	
   		end

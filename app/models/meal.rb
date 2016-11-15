@@ -12,9 +12,6 @@ class Meal < ApplicationRecord
 	has_many :photos, :as => :phototable, :dependent => :destroy
 	accepts_nested_attributes_for :photos
 
-	has_many :coupon_tracks,:dependent => :destroy
-  has_many :coupon_used_by,:through => :coupon_tracks, :source=> :user
-
 	def return_json
 		{ 
 			:id =>self.id,

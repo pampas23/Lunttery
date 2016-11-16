@@ -2,9 +2,7 @@ class DinnersController < ApplicationController
 	before_action :find_dinner, :only =>[:show,:edit,:update,:destroy]
 
 	def index
-		# @dinners=Dinner.all
-		@dinners=Dinner.order("id desc").page(params[:page]).per(5)
-		@meals=Meal.order("id desc").page(params[:page]).per(5)
+		@meals=Meal.order("id desc").page(params[:page]).per(5).includes(:style,:photos,:users,:user_meal_likeships)
 		if params[:id]
 			@dinner=Dinner.find(params[:id])
 			@sub = "更新"

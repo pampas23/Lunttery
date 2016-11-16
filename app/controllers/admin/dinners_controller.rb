@@ -5,7 +5,7 @@ class Admin::DinnersController < ApplicationController
 	layout "admin"
 	def index
 		# @dinners=Dinner.all
-		@dinners=Dinner.order("id desc").page(params[:page]).per(5)
+		@dinners=Dinner.order("id desc").page(params[:page]).per(5).includes(:style,:photos)
 		
 		if params[:id]
 			@dinner=Dinner.find(params[:id])
@@ -22,7 +22,7 @@ class Admin::DinnersController < ApplicationController
 	end
 
 	def show		
-		@meals = @dinner.meals
+		@meals = @dinner.meals.includes(:style,:photos)
 		@meal  = Meal.new
 		@photo = @dinner.photos.new
 	end

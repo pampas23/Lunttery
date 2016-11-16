@@ -5,7 +5,7 @@
         <%@meals.each do  |meal|%>
           <div class="meal_info">
             <% if meal.photos!=[]%>
-            <div class="meal_pic" style="background-image: url('<%=meal.return_photo_url%>');"></div>
+            <div class="meal_pic" style="background-image: url('<%= meal.photo_url%>');"></div>
             <% else %>
             <div class="meal_pic"></div>            
             <% end %>

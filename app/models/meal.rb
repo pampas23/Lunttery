@@ -32,4 +32,9 @@ class Meal < ApplicationRecord
 				return	[ApplicationController.helpers.asset_url( photo.avatar.url(:medium) )]
 		end
 	end
+	def photo_url
+		self.photos.map do |photo|
+				return	ApplicationController.helpers.asset_url( photo.avatar.url(:medium) )
+		end
+	end
 end

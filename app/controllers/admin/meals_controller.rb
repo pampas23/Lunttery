@@ -62,7 +62,7 @@ class Admin::MealsController < ApplicationController
 private
 
 	def meal_params
-		params.require(:meal).permit(:name,:discription,:style_id,:price,photos_attributes: [:avatar])
+		params.require(:meal).permit(:name,:discription,:style_id,:price,:calories,photos_attributes: [:avatar])
 	end
 	def admin_only
 		if current_user&&current_user.role ='admin'

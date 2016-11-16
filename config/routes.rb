@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 	end
 
 	namespace :admin do
+		resources :meals
 		resources :dinners do
 			resources :meals do
 				resources :user_meal_likeships, :only =>[:edit]

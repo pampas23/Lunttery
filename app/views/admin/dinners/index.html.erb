@@ -9,7 +9,7 @@
     <% @dinners.each do |dinner| %>
       <tr>
         <td><%=dinner.id %></td>
-        <td><%= dinner.name %></td>
+        <td> <%= link_to "#{ dinner.name}" ,admin_dinner_path(dinner) %></td>
         <td>
           <%= link_to "Show", admin_dinner_path(dinner),:class=>"btn btn-info" %>
           <%= link_to "Edit", admin_dinners_path(:id => dinner.id,:page => params[:page]),:class=>"btn btn-primary"%>

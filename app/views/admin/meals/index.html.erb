@@ -1,0 +1,23 @@
+<div>
+  <table class="table table-hover">
+    <tr>
+      <th>ID</th>
+      <th>名稱</th>
+      <th>餐廳</th>
+      <th>功能</th>
+    </tr>
+    
+    <% @meals.each do |meal| %>
+      <tr>
+        <td><%=meal.id %></td>
+        <td><%= meal.name %></td>
+        <td> <%= link_to "#{ meal.dinner.name}" ,admin_dinner_path(meal.dinner) %></td>
+        <td>
+          <%= link_to "Edit", admin_dinner_meal_path(meal.dinner,meal),:class=>"btn btn-info" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%=paginate @meals%>

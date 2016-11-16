@@ -2,6 +2,10 @@ class Admin::MealsController < ApplicationController
 	layout "admin"
 	#to be up the upperclass
 	before_action :admin_only
+
+	def index
+		@meals=Meal.order("id desc").page(params[:page]).per(5).includes(:dinner)
+	end
 	def new
 		@dinner=Dinner.find(params[:dinner_id])
 		@meal=@dinner.meals.new
@@ -45,6 +49,14 @@ class Admin::MealsController < ApplicationController
 				photo.destroy
 			end
 		end
+	end
+
+	def destroy
+		# raise
+		@meal = Meal.find(params[:id])
+		@dinner = @meal.dinner
+		@meal.destroy
+		redirect_to admin_dinner_path(@dinner)
 	end
 
 private

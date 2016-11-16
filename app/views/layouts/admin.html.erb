@@ -27,7 +27,11 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
     </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom CSS -->
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link href="/css/main.css" rel="stylesheet">
     <link href="/css/responsive.css" rel="stylesheet">
@@ -36,16 +40,14 @@
 
   <body>
   
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <!-- logo區 -->
   <a class="navbar-brand" href="#"><img src="/images/Lunttery_logo.png"></a>
   <a class="navbar-brand" href="<%= admin_dinners_path%>">Admin Page</a>
 
   <!-- 左選單 -->
   <ul class="nav navbar-nav">
-    <li><%= link_to "User Page", dinners_path %></li>
-    <li><%= link_to "Diners", admin_dinners_path %></li>
-    <li><%= link_to "Meals", admin_meals_path %></li>
+    
   </ul>
 
   <!-- 右選單 -->
@@ -60,9 +62,57 @@
     <% end %>
   </ul>
 </nav>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
+      <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <%= link_to "Change to user's Page", dinners_path %>
+                </li>
+                <li>
+                    <%= link_to "Diners", admin_dinners_path %>
+                </li>
+                <li>
+                    <%= link_to "Meals", admin_meals_path %>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                      <%= flash[:notice] %>
+                      <%= flash[:alert] %>
+                      <div class="container">
+                        <div class="row">
+
+                        <%= yield %>
+                        </div>
+                      </div>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
   
   </body>
 </html>
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>

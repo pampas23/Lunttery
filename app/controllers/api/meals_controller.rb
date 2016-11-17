@@ -56,9 +56,16 @@ class Api::MealsController < Api::ApiController
 
 	def show
 		@meal=Meal.find(params[:id])
+		@lat = params[:lat]
+		@lng = params[:lng]
+		@location = Geokit::LatLng.new(params[:lat],params[:lng])
 		@dinner = @meal.dinner
+		my_like_meal_ids = current_user.user_meal_likeships.pluck(:meal_id)
+
 			render :json => {
-				:data => @meal.return_json
+				:data => @meal.return_json,
+				:distance => @location.distance_from(@meal.dinner , :units => :kms),
+				:like => my_like_meal_ids.include?(@meal.id)
 			}
 	end
 

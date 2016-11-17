@@ -59,11 +59,24 @@
       <%=d.label :lng ,"經度"%>
       <%=d.text_field :lng ,:class => "form-control" %>
     </div>
-
+    
     <div class="form-group">
       <%=d.label :style_id ,"風格"%>
       <%=d.collection_select(:style_id, Style.all, :id, :name) %>
     </div>
+
+    <div class="form-group">
+      <%= d.radio_button :onsale, true %> 
+      <%= d.label :onsale, '有優惠', :value => true %>
+      <%= d.radio_button :onsale, false %>
+      <%= d.label :onsale, '無優惠', :value => false %>
+    </div>
+
+    <div class="form-group">
+      <%=d.label :onsale_content ,"優惠內容"%>
+      <%=d.text_field :onsale_content ,:class => "form-control" %>
+    </div>
+
     <div class="form-group">
       <%=d.label :phone_number ,"電話"%>
       <%=d.text_field :phone_number ,:class => "form-control" %>

@@ -19,6 +19,8 @@
         <th>風格</th>
         <th>價位</th>
         <th>電話</th>
+        <th>有無優惠</th>
+        <th>內容優惠</th>
     </tr>       
     
     <tr>
@@ -32,6 +34,8 @@
       <td><%= @dinner.style.try(:name) %></td>
       <td><%= @dinner.price_level %></td>
       <td><%= @dinner.phone_number %></td>
+      <td><%= @dinner.onsale %></td>
+      <td><%= @dinner.onsale_content %></td>
     </tr>
 
   </table>

@@ -31,7 +31,7 @@ class Admin::DinnersController < ApplicationController
 		@dinners=Dinner.page(params[:page]).per(5)
 		@dinner=Dinner.new(dinner_params)
 		
-		
+
 		if @dinner.save(dinner_params)
 			# @dinner.photos.create(params[:avatar])
 			# @dinner.save
@@ -72,7 +72,7 @@ class Admin::DinnersController < ApplicationController
 	end
 
 	def dinner_params
-		params.require(:dinner).permit(:name,:zip,:district,:address,:lat,:lng,:style,:price_level,:style_id,:phone_number,:avatar,photos_attributes: [:avatar])
+		params.require(:dinner).permit(:name,:zip,:district,:address,:lat,:lng,:style,:price_level,:style_id,:phone_number,:onsale,:onsale_content,:avatar,photos_attributes: [:avatar])
 	end
 
 	def admin_only

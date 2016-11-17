@@ -5,11 +5,23 @@ class Api::DinnersController < Api::ApiController
 		
 		if (params[:id])
 			@dinner=Dinner.find(params[:id])
-			@meals = @dinner.meals
+			@meals = @dinner.meals.includes(:user_meal_likeships,:styles)
+			if current_user
+				my_like_meal_ids = current_user.user_meal_likeships.pluck(:meal_id)
+				render :json => {
+					:data => @dinner.meals.includes(:user_meal_likeships,:users,:photos,:style).map{|meal| 
+						h = meal.return_json
+						h[:liked] = my_like_meal_ids.include?(meal.id)
+						h
+					}
+				}
 
+			else
 			render :json => {
 				:data => @dinner.meals.map{|meal| meal.return_json}
-			}
+			}				
+			end
+			
 		else
 			@dinners=Dinner.all
 			render :json => {

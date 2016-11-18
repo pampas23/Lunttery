@@ -29,7 +29,6 @@ class Api::CouponTracksController < Api::ApiController
 				render :json => {
 					:can_use_cupon => @sale,
 					:message =>@message,
-					:user => @user,
 					:dinner => @dinner,
 					:last_used_coupon => @user.coupon_tracks.where(:dinner => @dinner).last,
 					:last_coupon_used => @last_coupon_used,
@@ -39,7 +38,6 @@ class Api::CouponTracksController < Api::ApiController
 				render :json => {
 					:can_use_cupon => @sale,
 					:message =>@message,
-					:user => @user,
 					:dinner => @dinner,
 					:last_used_coupon => nil,
 					:last_coupon_used => nil,

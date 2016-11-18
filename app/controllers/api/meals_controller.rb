@@ -12,6 +12,7 @@ class Api::MealsController < Api::ApiController
 			@distant = params[:distant]
 			@style_ids = params[:style_ids].split(",").map { |s| s.to_i }
 			@price = params[:price].to_i
+			@is_find = "true"
 
 			@location = Geokit::LatLng.new(params[:lat],params[:lng])
 			@dinners = Dinner.within(@distant,:origin => @location).includes(:meals)
@@ -27,6 +28,10 @@ class Api::MealsController < Api::ApiController
 				end
 			end
 
+			if @select_meals == []
+				@select_meals = Meal.all.sample(6)
+				@is_find = "false"
+			end
 
 			if current_user
 				my_like_meal_ids = current_user.user_meal_likeships.pluck(:meal_id)
@@ -37,7 +42,8 @@ class Api::MealsController < Api::ApiController
 						h[:distance] = @location.distance_from(meal.dinner , :units => :kms)
 						h
 					},
-					:user_id => 	current_user.id
+					:user_id => current_user.id,
+					:is_find => @is_find
 				}
 			else
 				render :json => {
@@ -47,7 +53,8 @@ class Api::MealsController < Api::ApiController
 						h[:distance] = @location.distance_from(meal.dinner , :units => :kms)
 						h
 						},
-					:user_id => 	"nil"
+					:user_id => 	"nil",
+					:is_find => @is_find
 				}
 			end
 		end

@@ -3,6 +3,7 @@
     <tr>
       <th>ID</th>
 			<th>Email</th>
+      <th>身份</th>
 			<th>註冊時間</th>
     </tr>
     
@@ -10,6 +11,7 @@
       <tr>
         <td><%=user.id %></td>
 				<td><%= link_to "#{user.email}", admin_user_path(user)%></td>
+        <td><%= user.role %></td>
 				<td><%= user.created_at%></td>
       </tr>
     <% end %>

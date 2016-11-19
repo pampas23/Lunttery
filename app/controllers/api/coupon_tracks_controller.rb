@@ -1,7 +1,7 @@
 class Api::CouponTracksController < Api::ApiController
 	def edit
 		@dinner=Dinner.find(params[:dinner_id])
-		@user=User.find(params[:id])
+		@user=User.includes(:coupon_tracks).find(params[:id])
 
 		if @user&&@dinner
 			@sale = false

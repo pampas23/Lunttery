@@ -21,7 +21,7 @@
     <tr>
       <th>ID</th>
 			<th>餐點</th>
-			<th>風格</th>
+      <th>風格</th>      
 			<th>照片</th>
 			<th>介紹</th>
     </tr>
@@ -29,6 +29,7 @@
      <tr>
         <td><%= meal.id %></td>
         <td><%= meal.name %></td>
+        <td><%= meal.style.name %></td>
         <td>
 					<%meal.photos.each do |photo|%> 
 						<%if photo.avatar_file_name%>
@@ -36,7 +37,7 @@
 						<%end %>
 					<%end %>        	
         </td>
-        <td><%= meal.style.name %></td>
+
         <td><%= meal.discription %></td>
       </tr>
       <% end %>

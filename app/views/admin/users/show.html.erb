@@ -49,12 +49,18 @@
   <table class="table table-hover">
     <tr>
       <th>ID</th>
+      <th>餐廳名稱</th>
       <th>使用時間</th>
+      <th>功能</th>
     </tr>
     <% @user.coupon_tracks.each do |coupon_track| %>
      <tr>
+        <td><%= coupon_track.id %></td>
         <td><%= coupon_track.dinner.name %></td>
         <td><%= coupon_track.created_at %></td>
+        <td>
+          <%= link_to "Delete",admin_user_coupon_track_path(@user,coupon_track.dinner,:coupon_id => coupon_track.id ),:method=>:delete %>
+        </td>
       </tr>
       <% end %>
   </table>

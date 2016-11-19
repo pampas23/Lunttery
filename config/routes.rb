@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 	end
 
 	namespace :admin do
-		resources :users
+		resources :users do
+			resources :coupon_tracks, :only =>[:destroy]
+		end
 		resources :meals
 		resources :dinners do
 			resources :meals do

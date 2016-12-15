@@ -1,0 +1,18 @@
+<h1>Hello comments</h1>
+
+<div>
+  <table class="table table-hover">
+    <tr>
+        <th>名字</th>
+        <th>意見</th>
+        <th>email	</th>
+    </tr>
+		<% @comments.each do |comment| %>
+	    <tr>
+	      <td><%= comment.name %></td>
+	      <td><%= comment.suggestion %></td>
+	      <td><%= comment.email %></td>
+	    </tr>
+    <% end %>
+  </table>
+</div>

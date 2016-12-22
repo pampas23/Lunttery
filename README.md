@@ -1,24 +1,24 @@
-# README
+# Lunttery 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Quick recommendation for lunch, solving the tiring and repetitive decision of office workers.
 
-Things you may want to cover:
+Created the Back-end system and admin with authority control with RoR, built database with Google Place API, developed API for iOS app. Keywords:PostgreSQL、geokit、paperclip、devise、omniauth-facebook、bootstrap.
 
-* Ruby version
 
-* System dependencies
+* Ruby version 2.3.1
+* Rails version 5.0
 
-* Configuration
+```
+git clone git@github.com:pampas23/Lunttery.git
+```
+```
+bundle install
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+cp config/facebook.yml.sample config/facebook.yml
+```
+if you want to use Facebook log_in, be sure to apply Facebook API KEY in https://developers.facebook.com/
+```
+bundle exec rake db:migrate
+```

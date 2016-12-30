@@ -27,10 +27,7 @@ class DinnersController < ApplicationController
 		@dinners=Dinner.page(params[:page]).per(5)
 		@dinner=Dinner.new(dinner_params)
 		
-		
 		if @dinner.save(dinner_params)
-			# @dinner.photos.create(params[:avatar])
-			# @dinner.save
 			flash[:notice]="dinner saved successfully"
 			redirect_to dinners_path
 		else

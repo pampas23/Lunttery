@@ -58,7 +58,6 @@ class Api::MealsController < Api::ApiController
 				}
 			end
 		end
-		# redirect_to dinners_path
 	end
 
 	def show

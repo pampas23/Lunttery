@@ -61,6 +61,12 @@ group :development, :test do
 	gem 'sqlite3'
   #Use rspec to test
   gem "rspec-rails"
+  #Factor girl
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 group :development do

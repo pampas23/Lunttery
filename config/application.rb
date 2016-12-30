@@ -6,16 +6,22 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module Lunttery
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.middleware.insert_before 0, 'Rack::Cors' do
+    config.middleware.insert_before 0, Rack::Cors do
     	allow do
       		origins '*'
       		resource '*', headers: :any, methods: [:get, :post, :delete, :put, :options]
     	end
   	end
+
+    config.generators do |g|
+      g.test_framework :rspec, :fixture => true, :views => false, :fixture_replacement => :factory_girl
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+    end    
   end
 end

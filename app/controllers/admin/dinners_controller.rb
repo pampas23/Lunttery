@@ -4,7 +4,6 @@ class Admin::DinnersController < ApplicationController
 	before_action :admin_only
 	layout "admin"
 	def index
-		# @dinners=Dinner.all
 		@dinners=Dinner.order("id desc").page(params[:page]).per(5).includes(:style,:photos)
 		
 		if params[:id]
@@ -28,13 +27,11 @@ class Admin::DinnersController < ApplicationController
 	end
 
 	def create
+		
 		@dinners=Dinner.page(params[:page]).per(5)
 		@dinner=Dinner.new(dinner_params)
-		
 
 		if @dinner.save(dinner_params)
-			# @dinner.photos.create(params[:avatar])
-			# @dinner.save
 			flash[:notice]="dinner saved successfully"
 			redirect_to admin_dinners_path
 		else

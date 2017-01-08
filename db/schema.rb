@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215062900) do
+ActiveRecord::Schema.define(version: 20170108082608) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "name"
@@ -53,9 +53,10 @@ ActiveRecord::Schema.define(version: 20161215062900) do
     t.text     "discription"
     t.integer  "price"
     t.integer  "style_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "calories",    default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "calories",                  default: 0
+    t.integer  "user_meal_likeships_count", default: 0
     t.index ["name"], name: "index_meals_on_name"
   end
 

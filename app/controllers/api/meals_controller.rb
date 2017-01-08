@@ -15,8 +15,7 @@ class Api::MealsController < Api::ApiController
 			@is_find = "true"
 
 			@location = Geokit::LatLng.new(params[:lat],params[:lng])
-			@dinners = Dinner.within(@distant,:origin => @location).includes(:meals)
-			
+			@dinners = Dinner.within(@distant,:origin => @location).includes(:meals => [:photos,:style ])
 			@select_meals =[]
 			@meals = @dinners.flat_map{ |d| d.meals }
 

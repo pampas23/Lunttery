@@ -4,6 +4,7 @@ FactoryGirl.define do
       "admin#{n}@gamil.com"
     end
     password "12345678"
+    authentication_token "qwerty"
     factory :admin_user do
     	role "admin"	
     end

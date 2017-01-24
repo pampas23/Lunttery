@@ -61,5 +61,31 @@ class User < ApplicationRecord
      #user.fb_raw_data = auth
      user.save!
      return user
+   end
+
+   def use_coupon(diner)
+      sale = false
+      message = "目前沒有優惠喔"
+      cd_hour = nil
+      
+      if diner.onsale == "true"
+        message = "領取餐券成功"         
+        if self.coupon_tracks == []
+          self.coupon_used << diner
+          sale = true          
+          last_coupon_used = nil
+        else
+          last_coupon_used = self.coupon_tracks.last.created_at
+          cd_hour = (Time.now - last_coupon_used)/3600
+
+          if cd_hour < 20
+            message = "一天只能領一次喔"
+          else
+            self.coupon_used << diner
+            sale = true
+          end
+        end       
+      end
+      return sale,message,last_coupon_used,cd_hour     
    end  
 end

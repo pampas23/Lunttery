@@ -1,7 +1,4 @@
-class Admin::MealsController < ApplicationController
-	layout "admin"
-	#to be up the upperclass
-	before_action :admin_only
+class Admin::MealsController < Admin::AdminController
 
 	def index
 		@meals=Meal.order("id desc").page(params[:page]).per(5).includes(:dinner)
@@ -64,11 +61,5 @@ private
 	def meal_params
 		params.require(:meal).permit(:name,:discription,:style_id,:price,:calories,photos_attributes: [:avatar])
 	end
-	def admin_only
-		if current_user&&current_user.role ='admin'
 
-		else
-			redirect_to dinners_path
-		end	
-	end
 end

@@ -1,6 +1,5 @@
-class Admin::UserMealLikeshipsController < ApplicationController
-	#to be up the upperclass
-	before_action :admin_only
+class Admin::UserMealLikeshipsController < Admin::AdminController
+
 	def edit
 		@meal=Meal.find(params[:meal_id])
 		@user=User.find(params[:id])
@@ -13,13 +12,6 @@ class Admin::UserMealLikeshipsController < ApplicationController
 		else
 			@user.meals<<@meal
 			redirect_to admin_dinner_path(@dinner)
-		end	
-	end
-	def admin_only
-		if current_user&&current_user.role ='admin'
-
-		else
-			redirect_to dinners_path
 		end	
 	end
 end

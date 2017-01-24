@@ -1,4 +1,4 @@
-class Admin::CouponTracksController < ApplicationController
+class Admin::CouponTracksController < Admin::AdminController
 	def destroy
 		@user = User.find(params[:user_id])
 		@coupon = CouponTrack.find(params[:coupon_id])
